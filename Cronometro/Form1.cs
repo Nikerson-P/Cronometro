@@ -31,12 +31,22 @@ namespace Cronometro
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            tempoG -= 1;
-            this.label1.Text = tempoG.ToString() ;
-            if(tempoG == 0)
+            if(radioButton1.Checked)
             {
-                this.timer1.Stop();
+                tempoG += 1;
+                this.label1.Text = tempoG.ToString();
+                
+
+            }else if (radioButton2.Checked)
+            {
+                tempoG -= 1;
+                this.label1.Text = tempoG.ToString();
+                if (tempoG == 0)
+                {
+                    this.timer1.Stop();
+                }
             }
+            
 
         }
         //Botao parar
@@ -48,10 +58,12 @@ namespace Cronometro
         //Botao definir
         private void button3_Click(object sender, EventArgs e)
         {
-            int tempo = int.Parse(textBox1.Text);
-            tempoG = tempo;
-            this.label1.Text = tempoG.ToString();
-            
+            if (radioButton2.Checked)
+            {
+                int tempo = int.Parse(textBox1.Text);
+                tempoG = tempo;
+                this.label1.Text = tempoG.ToString();
+            }
 
         }
 
